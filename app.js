@@ -1,6 +1,6 @@
 /* ============================================
 app.js — R2 NUSANTARA MAIN APPLICATION
-(UPGRADE: Light Mode Only, Professional Footer Features)
+(UPGRADE: 100% Light Mode, Semua Fitur Dipertahankan)
 ============================================ */
 (function () {
 'use strict';
