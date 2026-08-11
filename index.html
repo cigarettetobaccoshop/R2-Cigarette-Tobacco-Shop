@@ -1,313 +1,251 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cigarette Tobacco Shop | Premium Wholesale Distributor</title>
-    <meta name="description" content="Distributor rokok grosir resmi dan premium. Cigarette Tobacco Shop menyediakan produk berkualitas dengan layanan profesional.">
-    
-    <!-- Premium Fonts: Playfair Display (Headings) & Inter (Body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons (Lucide & FontAwesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Tailwind CSS (CDN for immediate rendering) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        warmWhite: '#F8F9FA',
-                        charcoal: '#333333',
-                        deepNavy: '#0F172A',
-                        mutedGold: '#C5A059',
-                        goldHover: '#D4AF37',
-                    },
-                    fontFamily: {
-                        playfair: ['"Playfair Display"', 'serif'],
-                        inter: ['"Inter"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'premium': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                        'premium-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cigarette Tobacco Shop | Distributor Rokok Grosir Premium</title>
+  <meta name="description" content="Distributor rokok grosir resmi. Merek ready stock, gratis ongkir, bayar setelah resi keluar, gudang fisik terverifikasi.">
+  <link rel="icon" type="image/png" href="assets/logo/logo.png">
+  
+  <!-- Font Setup: Playfair Display (Heading) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-warmWhite text-charcoal font-inter antialiased selection:bg-mutedGold selection:text-white">
+<body class="bg-main text-main font-body antialiased selection:bg-[#C5A059]/30 selection:text-[#0F172A]">
 
-    <!-- ============ HEADER / NAV ============ -->
-    <header class="fixed w-full top-0 z-50 bg-warmWhite/90 backdrop-blur-md border-b border-black/5 transition-all duration-300" id="mainHeader">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Brand -->
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-deepNavy flex items-center justify-center text-mutedGold shadow-premium">
-                        <i class="fa-solid fa-leaf"></i>
-                    </div>
-                    <span class="font-playfair font-bold text-xl tracking-tight text-deepNavy">Cigarette Tobacco Shop</span>
-                </div>
-                
-                <!-- Search -->
-                <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
-                    <input type="text" id="searchInput" placeholder="Cari produk premium..." class="w-full bg-white border border-black/10 rounded-full py-2.5 pl-12 pr-4 focus:outline-none focus:border-mutedGold focus:ring-1 focus:ring-mutedGold transition-smooth text-sm">
-                    <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-400"></i>
-                </div>
-
-                <!-- Actions (Cart, Wishlist) -->
-                <div class="flex items-center gap-6">
-                    <button id="wishlistBtn" class="text-charcoal hover:text-mutedGold transition-smooth relative" aria-label="Wishlist">
-                        <i class="fa-regular fa-heart text-xl"></i>
-                        <span id="wishlistCount" class="absolute -top-1.5 -right-2 bg-deepNavy text-mutedGold text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
-                    </button>
-                    <button id="cartBtn" class="text-charcoal hover:text-mutedGold transition-smooth relative flex items-center gap-2" aria-label="Keranjang">
-                        <div class="relative">
-                            <i class="fa-solid fa-bag-shopping text-xl"></i>
-                            <span id="cartCount" class="absolute -top-1.5 -right-2 bg-mutedGold text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- ============ HERO SECTION ============ -->
-    <section class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto space-y-6">
-            <span class="text-xs font-bold uppercase tracking-[0.1em] text-mutedGold">Distributor Resmi & Terpercaya</span>
-            <h1 class="font-playfair text-4xl md:text-6xl font-bold text-deepNavy leading-tight tracking-[-0.02em]">
-                Kualitas Premium untuk <br><span class="text-mutedGold italic">Mitra Bisnis Anda</span>
-            </h1>
-            <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                Cigarette Tobacco Shop menghadirkan koleksi lengkap dengan jaminan keaslian, pengiriman aman, dan layanan kelas satu untuk kebutuhan grosir Anda.
-            </p>
-            <div class="pt-4 flex justify-center gap-4">
-                <a href="#katalog" class="bg-deepNavy text-white px-8 py-3.5 rounded-full font-medium hover:bg-charcoal transition-smooth hover-lift shadow-premium">Lihat Katalog</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ WHY US (4 COLUMNS UPGRADED) ============ -->
-    <section class="py-24 bg-white border-y border-black/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-deepNavy tracking-[-0.02em]">Mengapa Memilih Kami?</h2>
-                <div class="w-16 h-0.5 bg-mutedGold mx-auto mt-6"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-warmWhite p-8 rounded-xl border border-black/5 shadow-premium hover-lift group">
-                    <div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-6 group-hover:bg-deepNavy transition-smooth">
-                        <i class="fa-solid fa-check-to-slot text-mutedGold text-xl"></i>
-                    </div>
-                    <h3 class="font-playfair font-bold text-lg mb-3 text-deepNavy">Produk 100% Asli</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Semua produk didistribusikan langsung dari pabrik resmi dengan pita cukai asli terjamin.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-warmWhite p-8 rounded-xl border border-black/5 shadow-premium hover-lift group">
-                    <div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-6 group-hover:bg-deepNavy transition-smooth">
-                        <i class="fa-solid fa-truck-fast text-mutedGold text-xl"></i>
-                    </div>
-                    <h3 class="font-playfair font-bold text-lg mb-3 text-deepNavy">Pengiriman Aman</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Packing standar keamanan tinggi dengan asuransi penuh untuk setiap pengiriman grosir.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-warmWhite p-8 rounded-xl border border-black/5 shadow-premium hover-lift group">
-                    <div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-6 group-hover:bg-deepNavy transition-smooth">
-                        <i class="fa-solid fa-headset text-mutedGold text-xl"></i>
-                    </div>
-                    <h3 class="font-playfair font-bold text-lg mb-3 text-deepNavy">Layanan Premium</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Dukungan pelanggan responsif siap membantu proses pemesanan hingga barang tiba.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="bg-warmWhite p-8 rounded-xl border border-black/5 shadow-premium hover-lift group">
-                    <div class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-6 group-hover:bg-deepNavy transition-smooth">
-                        <i class="fa-solid fa-shield-halved text-mutedGold text-xl"></i>
-                    </div>
-                    <h3 class="font-playfair font-bold text-lg mb-3 text-deepNavy">Transaksi Terlindungi</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">Sistem pembayaran Escrow yang aman. Dana diteruskan setelah resi tervalidasi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ CATALOG SECTION (ZERO DOWNGRADE) ============ -->
-    <section id="katalog" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h2 class="font-playfair text-3xl font-bold text-deepNavy tracking-[-0.02em]">Katalog Premium</h2>
-                    <p class="text-gray-500 mt-2">Pilih dari koleksi terbaik kami</p>
-                </div>
-                <!-- Filters -->
-                <div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar w-full md:w-auto" id="filterContainer">
-                    <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium bg-deepNavy text-white shadow-premium transition-smooth" data-filter="all">Semua</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white border border-black/10 text-gray-600 hover:border-mutedGold hover:text-mutedGold transition-smooth" data-filter="mild">Mild</button>
-                    <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium bg-white border border-black/10 text-gray-600 hover:border-mutedGold hover:text-mutedGold transition-smooth" data-filter="kretek">Kretek</button>
-                </div>
-            </div>
-
-            <!-- Grid Render Target for app.js -->
-            <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-                <!-- Products injected via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ PREMIUM FOOTER (4 COLUMNS) ============ -->
-    <footer class="bg-gradient-to-br from-deepNavy to-[#1A202C] text-gray-300 pt-24 pb-12 border-t-[4px] border-mutedGold">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-16 border-b border-white/10">
-                
-                <!-- Col 1: Brand & Newsletter -->
-                <div class="space-y-6">
-                    <h3 class="font-playfair text-2xl font-bold text-white tracking-[-0.02em]">Cigarette Tobacco Shop</h3>
-                    <p class="text-sm leading-relaxed text-gray-400">
-                        Distributor grosir terpercaya untuk mitra bisnis. Kami menjamin keaslian, kualitas, dan layanan berkelas untuk setiap transaksi Anda.
-                    </p>
-                    <form class="relative group mt-4">
-                        <input type="email" placeholder="Email untuk Newsletter" class="w-full bg-white/5 border border-white/10 rounded-md py-3 pl-4 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-mutedGold focus:bg-white/10 transition-smooth">
-                        <button type="button" class="absolute right-2 top-2 bottom-2 bg-mutedGold text-deepNavy px-3 rounded hover:bg-goldHover transition-smooth">
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Col 2: Contact -->
-                <div class="space-y-6 lg:border-l lg:border-white/10 lg:pl-8">
-                    <h4 class="font-playfair text-lg font-semibold text-white tracking-wide uppercase text-[0.85rem] tracking-[0.1em]">Hubungi Kami</h4>
-                    <ul class="space-y-4 text-sm">
-                        <li>
-                            <a href="mailto:cigaratetobacoshop@gmail.com" class="flex items-start gap-3 hover:text-mutedGold transition-smooth group">
-                                <i class="fa-regular fa-envelope mt-1 text-mutedGold"></i>
-                                <span>cigaratetobacoshop@gmail.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/6285715905079" target="_blank" class="flex items-start gap-3 hover:text-mutedGold transition-smooth group">
-                                <i class="fa-brands fa-whatsapp mt-1 text-mutedGold"></i>
-                                <span>+62 857-1590-5079</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://maps.app.goo.gl/hGzd5i2s983bZz3S9" target="_blank" class="flex items-start gap-3 hover:text-mutedGold transition-smooth group">
-                                <i class="fa-solid fa-location-dot mt-1 text-mutedGold"></i>
-                                <span class="leading-relaxed">Gudang Distributor - R2 Nusantara<br>WJMC+WG8, Karangduren, Kec. Pakisaji, Kab. Malang, Jawa Timur 65162</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Legal -->
-                <div class="space-y-6 lg:border-l lg:border-white/10 lg:pl-8">
-                    <h4 class="font-playfair text-lg font-semibold text-white tracking-wide uppercase text-[0.85rem] tracking-[0.1em]">Informasi Legal</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-mutedGold transition-smooth flex items-center gap-2"><span class="w-1 h-1 bg-mutedGold rounded-full opacity-0 transition-smooth"></span> Kebijakan Privasi</a></li>
-                        <li><a href="#" class="hover:text-mutedGold transition-smooth flex items-center gap-2"><span class="w-1 h-1 bg-mutedGold rounded-full opacity-0 transition-smooth"></span> Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="hover:text-mutedGold transition-smooth flex items-center gap-2"><span class="w-1 h-1 bg-mutedGold rounded-full opacity-0 transition-smooth"></span> Kebijakan Pengembalian</a></li>
-                        <li><a href="#" class="hover:text-mutedGold transition-smooth flex items-center gap-2"><span class="w-1 h-1 bg-mutedGold rounded-full opacity-0 transition-smooth"></span> Jaminan Keaslian</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Trust Signals -->
-                <div class="space-y-6 lg:border-l lg:border-white/10 lg:pl-8">
-                    <h4 class="font-playfair text-lg font-semibold text-white tracking-wide uppercase text-[0.85rem] tracking-[0.1em]">Keamanan & Validasi</h4>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="trust-badge flex flex-col items-center justify-center p-3 rounded bg-white/5 border border-white/10 hover:border-mutedGold hover:bg-white/10 transition-smooth cursor-default">
-                            <i class="fa-solid fa-lock text-mutedGold mb-2"></i>
-                            <span class="text-[10px] uppercase tracking-wider text-center font-semibold">SSL Secure</span>
-                        </div>
-                        <div class="trust-badge flex flex-col items-center justify-center p-3 rounded bg-white/5 border border-white/10 hover:border-mutedGold hover:bg-white/10 transition-smooth cursor-default">
-                            <i class="fa-solid fa-building-circle-check text-mutedGold mb-2"></i>
-                            <span class="text-[10px] uppercase tracking-wider text-center font-semibold">Verified Biz</span>
-                        </div>
-                        <div class="trust-badge flex flex-col items-center justify-center p-3 rounded bg-white/5 border border-white/10 hover:border-mutedGold hover:bg-white/10 transition-smooth cursor-default">
-                            <i class="fa-brands fa-google text-mutedGold mb-2"></i>
-                            <span class="text-[10px] uppercase tracking-wider text-center font-semibold">Trusted Store</span>
-                        </div>
-                        <div class="trust-badge flex flex-col items-center justify-center p-3 rounded bg-white/5 border border-white/10 hover:border-mutedGold hover:bg-white/10 transition-smooth cursor-default">
-                            <i class="fa-solid fa-shield-cat text-mutedGold mb-2"></i>
-                            <span class="text-[10px] uppercase tracking-wider text-center font-semibold">Escrow Protect</span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                <p>&copy; 2026 Cigarette Tobacco Shop. All rights reserved.</p>
-                <div class="flex gap-4">
-                    <span class="hover:text-white transition-smooth cursor-pointer">Desain Premium</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ============ PREMIUM FLOATING WIDGETS ============ -->
-    
-    <!-- Toast Notification Container -->
-    <div id="toast-container" class="fixed top-24 right-4 z-[95] space-y-2 w-[calc(100%-2rem)] max-w-xs pointer-events-none flex flex-col items-end"></div>
-    
-    <!-- Floating WhatsApp (Pulse Animation) -->
-    <a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="wa-floating-btn fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" aria-label="Chat WhatsApp">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-    </a>
-
-    <!-- Back to Top (Smooth) -->
-    <button id="backToTop" class="fixed bottom-24 right-6 z-40 w-12 h-12 rounded-full bg-white text-charcoal border border-black/10 shadow-premium flex items-center justify-center opacity-0 translate-y-4 pointer-events-none transition-all duration-500 hover:bg-warmWhite hover:text-mutedGold hover:border-mutedGold" aria-label="Kembali ke atas">
-        <i class="fa-solid fa-arrow-up text-sm"></i>
-    </button>
-
-    <!-- Cookie Consent Banner (GDPR Compliant) -->
-    <div id="cookieConsent" class="fixed bottom-0 left-0 w-full z-50 transform translate-y-full opacity-0 transition-all duration-700 ease-out p-4 md:p-6 pointer-events-none">
-        <div class="max-w-4xl mx-auto bg-deepNavy text-white rounded-xl shadow-2xl p-6 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 pointer-events-auto">
-            <div class="flex items-start gap-4">
-                <i class="fa-solid fa-cookie-bite text-2xl text-mutedGold mt-1"></i>
-                <div>
-                    <h5 class="font-playfair font-bold text-lg mb-1 tracking-wide">Privasi & Cookie</h5>
-                    <p class="text-sm text-gray-300 leading-relaxed">Cigarette Tobacco Shop menggunakan cookie untuk memastikan Anda mendapatkan pengalaman premium di website kami. Dengan melanjutkan, Anda menyetujui kebijakan privasi kami.</p>
-                </div>
-            </div>
-            <div class="flex-shrink-0 flex gap-3 w-full md:w-auto">
-                <button id="acceptCookie" class="flex-1 md:flex-none bg-mutedGold text-deepNavy font-medium px-6 py-2.5 rounded hover:bg-goldHover transition-smooth text-sm">Mengerti & Setuju</button>
-            </div>
-        </div>
+  <!-- ============ NAVBAR ============ -->
+  <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-subtle shadow-subtle transition-all duration-300">
+    <div class="container mx-auto px-6 max-w-7xl h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <!-- Logo Text -->
+        <a href="#" class="font-heading text-2xl font-bold tracking-tight text-[#1E293B]">
+          Cigarette<span class="text-[#C5A059]">.</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-6">
+        <!-- Fitur Navigasi Existing -->
+        <button id="cartBtn" class="relative text-[#475569] hover:text-[#C5A059] transition-colors p-2" aria-label="Keranjang">
+          <i class="fa-solid fa-cart-shopping text-xl"></i>
+          <span id="cartCount" class="absolute top-0 right-0 bg-[#C5A059] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">0</span>
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <!-- ============ MODALS (Zero Downgrade UI Targets) ============ -->
-    <!-- Cart Modal -->
-    <div id="cartModal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-deepNavy/40 backdrop-blur-sm" id="cartOverlay"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-warmWhite shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col" id="cartDrawer">
-            <div class="p-6 border-b border-black/5 flex justify-between items-center bg-white">
-                <h2 class="font-playfair text-xl font-bold text-deepNavy">Keranjang Belanja</h2>
-                <button id="closeCart" class="text-gray-400 hover:text-red-500 transition-smooth"><i class="fa-solid fa-xmark text-xl"></i></button>
-            </div>
-            <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
-                <!-- Cart items injected here -->
-            </div>
-            <div class="p-6 bg-white border-t border-black/5 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.02)]">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-gray-600 font-medium text-sm">Total Belanja:</span>
-                    <span id="cartTotal" class="font-bold text-lg text-deepNavy">Rp 0</span>
-                </div>
-                <button id="checkoutBtn" class="w-full bg-deepNavy text-white py-3.5 rounded-lg font-medium hover:bg-charcoal transition-smooth shadow-premium flex justify-center items-center gap-2">
-                    Lanjut Checkout <i class="fa-solid fa-arrow-right text-sm"></i>
-                </button>
-            </div>
-        </div>
+  <!-- ============ HERO SECTION ============ -->
+  <header class="relative bg-[#F8F9FA] pt-24 pb-32 overflow-hidden border-b border-subtle">
+    <div class="container mx-auto px-6 max-w-7xl relative z-10 text-center">
+      <span class="inline-block py-1 px-3 rounded-full bg-[#C5A059]/10 text-[#C5A059] font-semibold text-xs tracking-[0.1em] uppercase mb-6 border border-[#C5A059]/20">
+        Distributor Resmi Terpercaya
+      </span>
+      <h1 class="font-heading text-4xl md:text-6xl font-bold text-[#1E293B] mb-6 leading-tight tracking-tight max-w-4xl mx-auto">
+        Kualitas Premium untuk <br class="hidden md:block">Kebutuhan Bisnis Anda
+      </h1>
+      <p class="text-[#475569] text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+        Pusat grosir rokok terlengkap. Transaksi aman, harga kompetitif, dan jaminan pengiriman profesional ke seluruh Indonesia.
+      </p>
+      <a href="#katalog" class="inline-flex items-center justify-center bg-[#0F172A] hover:bg-[#1E293B] text-white px-8 py-4 rounded-md font-semibold transition-all duration-300 shadow-premium hover:shadow-hover hover:-translate-y-1">
+        Lihat Katalog Produk
+        <i class="fa-solid fa-arrow-right ml-3 text-sm"></i>
+      </a>
     </div>
+  </header>
 
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+  <!-- ============ SECTION WHY (4 COLUMNS) ============ -->
+  <section id="why" class="py-24 bg-white">
+    <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-[#1E293B] mb-6 tracking-tight">Mengapa Memilih Kami?</h2>
+        <div class="w-16 h-[2px] bg-[#C5A059] mx-auto rounded-full"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-[#F8F9FA] p-8 rounded-xl border border-subtle shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#C5A059] mb-6 border border-subtle shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <i class="fa-solid fa-boxes-stacked text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-[#1E293B] mb-3">Stok Terlengkap</h3>
+          <p class="text-[#475569] leading-relaxed text-sm">Ratusan merek ready stock di gudang fisik kami, siap memenuhi permintaan skala besar kapan pun.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-[#F8F9FA] p-8 rounded-xl border border-subtle shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#C5A059] mb-6 border border-subtle shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <i class="fa-solid fa-truck-fast text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-[#1E293B] mb-3">Gratis Ongkir</h3>
+          <p class="text-[#475569] leading-relaxed text-sm">Nikmati pengiriman gratis ke seluruh penjuru Indonesia dengan minimal pemesanan 1 Bal.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-[#F8F9FA] p-8 rounded-xl border border-subtle shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#C5A059] mb-6 border border-subtle shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <i class="fa-solid fa-shield-halved text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-[#1E293B] mb-3">Bayar Aman</h3>
+          <p class="text-[#475569] leading-relaxed text-sm">Sistem pembayaran transparan hanya dilakukan setelah resi resmi keluar. Dana Anda 100% aman.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-[#F8F9FA] p-8 rounded-xl border border-subtle shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#C5A059] mb-6 border border-subtle shadow-sm group-hover:scale-110 transition-transform duration-300">
+            <i class="fa-solid fa-headset text-xl"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-[#1E293B] mb-3">Layanan Premium</h3>
+          <p class="text-[#475569] leading-relaxed text-sm">Dukungan tim representatif yang berdedikasi membantu kelancaran operasional bisnis Anda 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KATALOG WRAPPER (Existing Logic Holder) ============ -->
+  <section id="katalog" class="py-24 bg-[#F8F9FA]">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl font-bold text-[#1E293B] mb-6">Katalog Produk</h2>
+        <div class="w-16 h-[2px] bg-[#C5A059] mx-auto rounded-full"></div>
+      </div>
+      <!-- Tempat render JS -->
+      <div id="products-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER PREMIUM (4 COLUMNS) ============ -->
+  <footer class="bg-gradient-to-br from-[#0F172A] to-[#1A202C] text-white pt-24 pb-8 relative border-t-[3px] border-[#C5A059]">
+    <div class="container mx-auto px-6 max-w-7xl relative z-10">
+      
+      <!-- Top Grid 4 Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+        
+        <!-- Col 1: Brand & Newsletter -->
+        <div class="flex flex-col">
+          <h3 class="font-heading text-2xl font-bold text-white mb-6 tracking-tight">Cigarette Tobacco Shop</h3>
+          <p class="text-slate-400 leading-relaxed mb-8 text-sm flex-grow">
+            Mitra distributor rokok grosir premium terpercaya. Menyediakan produk orisinal dengan standar layanan korporat untuk eksekusi bisnis yang lancar.
+          </p>
+          <form class="relative group">
+            <input type="email" placeholder="Alamat email Anda" required class="w-full bg-[#1E293B]/60 border border-slate-700 rounded-lg py-3.5 px-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#C5A059] transition-all duration-300">
+            <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 bg-[#C5A059] hover:bg-[#D4AF37] text-[#0F172A] px-5 rounded-md font-semibold text-xs tracking-wider transition-colors duration-300">
+              DAFTAR
+            </button>
+          </form>
+        </div>
+
+        <!-- Col 2: Kontak -->
+        <div>
+          <h4 class="font-heading text-lg font-semibold text-white mb-8 tracking-[0.05em] uppercase text-sm text-[#C5A059]">Hubungi Kami</h4>
+          <ul class="space-y-5">
+            <li>
+              <a href="mailto:cigaratetobacoshop@gmail.com" class="flex items-start group">
+                <div class="w-8 h-8 rounded bg-[#1E293B] flex items-center justify-center shrink-0 mr-4 border border-slate-800 group-hover:border-[#C5A059]/50 transition-colors">
+                  <i class="fa-regular fa-envelope text-[#C5A059] text-sm"></i>
+                </div>
+                <span class="text-slate-400 group-hover:text-white transition-colors text-sm leading-relaxed pt-1 break-all">cigaratetobacoshop@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="flex items-start group">
+                <div class="w-8 h-8 rounded bg-[#1E293B] flex items-center justify-center shrink-0 mr-4 border border-slate-800 group-hover:border-[#C5A059]/50 transition-colors">
+                  <i class="fa-brands fa-whatsapp text-[#C5A059] text-sm"></i>
+                </div>
+                <span class="text-slate-400 group-hover:text-white transition-colors text-sm leading-relaxed pt-1">+62 857-1590-5079</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://maps.app.goo.gl/hGzd5i2s983bZz3S9" target="_blank" rel="noopener" class="flex items-start group">
+                <div class="w-8 h-8 rounded bg-[#1E293B] flex items-center justify-center shrink-0 mr-4 border border-slate-800 group-hover:border-[#C5A059]/50 transition-colors">
+                  <i class="fa-solid fa-location-dot text-[#C5A059] text-sm"></i>
+                </div>
+                <span class="text-slate-400 group-hover:text-white transition-colors text-sm leading-relaxed pt-1">Gudang Distributor - R2 Nusantara<br>WJMC+WG8, Karangduren, Pakisaji<br>Malang, Jawa Timur 65162</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Legal -->
+        <div>
+          <h4 class="font-heading text-lg font-semibold text-white mb-8 tracking-[0.05em] uppercase text-sm text-[#C5A059]">Informasi Legal</h4>
+          <ul class="space-y-4">
+            <li><a href="#" class="text-slate-400 hover:text-[#C5A059] transition-colors text-sm flex items-center group"><span class="w-3 h-[1px] bg-slate-700 group-hover:bg-[#C5A059] mr-3 transition-colors"></span>Kebijakan Pengembalian</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-[#C5A059] transition-colors text-sm flex items-center group"><span class="w-3 h-[1px] bg-slate-700 group-hover:bg-[#C5A059] mr-3 transition-colors"></span>Syarat & Ketentuan</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-[#C5A059] transition-colors text-sm flex items-center group"><span class="w-3 h-[1px] bg-slate-700 group-hover:bg-[#C5A059] mr-3 transition-colors"></span>Kebijakan Privasi</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-[#C5A059] transition-colors text-sm flex items-center group"><span class="w-3 h-[1px] bg-slate-700 group-hover:bg-[#C5A059] mr-3 transition-colors"></span>FAQ & Bantuan</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Trust Signals -->
+        <div>
+          <h4 class="font-heading text-lg font-semibold text-white mb-8 tracking-[0.05em] uppercase text-sm text-[#C5A059]">Keamanan Verifikasi</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-[#1E293B]/40 border border-slate-700/50 p-4 rounded-lg flex flex-col items-center justify-center text-center group hover:bg-[#1E293B]/80 hover:border-[#C5A059]/50 transition-all duration-300">
+              <i class="fa-solid fa-lock text-[#C5A059] text-2xl mb-3 group-hover:-translate-y-1 transition-transform duration-300"></i>
+              <span class="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">SSL Secure</span>
+            </div>
+            <div class="bg-[#1E293B]/40 border border-slate-700/50 p-4 rounded-lg flex flex-col items-center justify-center text-center group hover:bg-[#1E293B]/80 hover:border-[#C5A059]/50 transition-all duration-300">
+              <i class="fa-solid fa-certificate text-[#C5A059] text-2xl mb-3 group-hover:-translate-y-1 transition-transform duration-300"></i>
+              <span class="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Verified Biz</span>
+            </div>
+            <div class="bg-[#1E293B]/40 border border-slate-700/50 p-4 rounded-lg flex flex-col items-center justify-center text-center group hover:bg-[#1E293B]/80 hover:border-[#C5A059]/50 transition-all duration-300">
+              <i class="fa-solid fa-shield-cat text-[#C5A059] text-2xl mb-3 group-hover:-translate-y-1 transition-transform duration-300"></i>
+              <span class="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Escrow Safe</span>
+            </div>
+            <div class="bg-[#1E293B]/40 border border-slate-700/50 p-4 rounded-lg flex flex-col items-center justify-center text-center group hover:bg-[#1E293B]/80 hover:border-[#C5A059]/50 transition-all duration-300">
+              <i class="fa-brands fa-google text-[#C5A059] text-2xl mb-3 group-hover:-translate-y-1 transition-transform duration-300"></i>
+              <span class="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Trusted Store</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-slate-500 text-xs tracking-wide mb-4 md:mb-0">
+          © 2026 Cigarette Tobacco Shop. All Rights Reserved.
+        </p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-slate-500 hover:text-[#C5A059] transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="text-slate-500 hover:text-[#C5A059] transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING UI & WIDGETS ============ -->
+  
+  <!-- Cookie Consent Banner -->
+  <div id="cookieBanner" class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md z-[100] border-t border-subtle shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)] transform translate-y-full transition-transform duration-700 ease-in-out hidden">
+    <div class="container mx-auto px-6 max-w-7xl py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex-grow text-sm text-[#475569] leading-relaxed text-center md:text-left">
+        Kami menggunakan cookies untuk mengoptimalkan pengalaman bernavigasi dan memberikan layanan terbaik untuk Anda. Dengan melanjutkan, Anda menyetujui <a href="#" class="text-[#C5A059] font-medium hover:underline">Kebijakan Privasi</a> kami.
+      </div>
+      <div class="shrink-0 flex gap-3">
+        <button id="acceptCookies" class="bg-[#0F172A] hover:bg-[#1E293B] text-white px-6 py-2.5 rounded text-sm font-medium transition-colors shadow-sm">Mengerti & Setuju</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container (Existing functionality placeholder) -->
+  <div id="toast-container" class="fixed top-24 right-4 z-[95] space-y-3 w-[calc(100%-2rem)] max-w-xs"></div>
+
+  <!-- Floating WhatsApp Chat -->
+  <a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="fixed bottom-8 right-6 z-40 w-[56px] h-[56px] rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-premium hover:shadow-hover transition-all duration-300 hover:-translate-y-1 wa-pulse-anim" aria-label="Live Chat WhatsApp">
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
+  </a>
+
+  <!-- Back To Top -->
+  <button id="backToTop" class="fixed bottom-28 right-6 z-40 w-11 h-11 rounded bg-white text-[#1E293B] border border-subtle flex items-center justify-center shadow-subtle hover:shadow-premium hover:-translate-y-1 transition-all duration-300 opacity-0 pointer-events-none" aria-label="Kembali ke atas">
+    <i class="fa-solid fa-chevron-up text-sm"></i>
+  </button>
+
+  <script src="app.js"></script>
 </body>
 </html>
