@@ -150,15 +150,15 @@ function renderStars(rating) {
 }
 function isNewProduct(id) { var n = parseInt(id.replace(/\D/g, ''), 10); return n % 11 === 0; }
 function getRibbonBadge(p) {
- if (isNewProduct(p.id)) return { cls: 'new', label: '✨ BARU' };
+ if (isNewProduct(p.id)) return { cls: 'new', label: '<i class="fa-solid fa-bolt"></i> BARU' };
  if (p.category === 'resmi') {
- if (p.segment === 'A' || p.segment === 'D') return { cls: 'vip', label: '👑 VIP' };
- if (p.segment === 'B') return { cls: 'hit', label: '🔥 TERLARIS' };
+ if (p.segment === 'A' || p.segment === 'D') return { cls: 'vip', label: '<i class="fa-solid fa-crown"></i> VIP' };
+ if (p.segment === 'B') return { cls: 'hit', label: '<i class="fa-solid fa-fire"></i> TERLARIS' };
  return null;
  }
  var tier = getR2Tier(p.price);
- if (tier === 'premium') return { cls: 'vip', label: '👑 VIP' };
- if (tier === 'populer') return { cls: 'hit', label: '🔥 TERLARIS' };
+ if (tier === 'premium') return { cls: 'vip', label: '<i class="fa-solid fa-crown"></i> VIP' };
+ if (tier === 'populer') return { cls: 'hit', label: '<i class="fa-solid fa-fire"></i> TERLARIS' };
  return null;
 }
 window.switchCatalog = function (cat) {
@@ -396,9 +396,33 @@ window.toggleWishlistSidebar = function () {
  else { o.classList.add('opacity-0'); s.classList.add('translate-x-full'); setTimeout(function () { o.classList.add('hidden'); }, 300); document.body.style.overflow = ''; }
 };
 
+/* ============ 8B. RECENTLY VIEWED ============ */
+function getRecentlyViewed() {
+ try { return JSON.parse(localStorage.getItem('r2_recently_viewed') || '[]'); } catch (e) { return []; }
+}
+function trackRecentlyViewed(id) {
+ var list = getRecentlyViewed().filter(function (x) { return x !== id; });
+ list.unshift(id);
+ list = list.slice(0, 10);
+ try { localStorage.setItem('r2_recently_viewed', JSON.stringify(list)); } catch (e) {}
+ renderRecentlyViewed();
+}
+function renderRecentlyViewed() {
+ var wrap = document.getElementById('recentlyViewedWrap'), row = document.getElementById('recentlyViewedRow');
+ if (!wrap || !row) return;
+ var ids = getRecentlyViewed();
+ var items = ids.map(function (id) { return allProducts.find(function (p) { return p.id === id; }); }).filter(Boolean).slice(0, 8);
+ if (!items.length) { wrap.classList.add('hidden'); return; }
+ wrap.classList.remove('hidden');
+ row.innerHTML = items.map(function (p) {
+ return '<button onclick="openQuickView(\'' + p.id + '\')" class="recent-chip" aria-label="Lihat ' + escapeHtml(p.name) + '"><span class="recent-chip-thumb">' + generateProductPlaceholder(p.name, 'small', p.id) + '</span><span class="recent-chip-name">' + escapeHtml(p.name) + '</span><span class="recent-chip-price">' + formatRupiah(p.price) + '</span></button>';
+ }).join('');
+}
+
 /* ============ 9. QUICK VIEW ============ */
 window.openQuickView = function (id) {
  var p = allProducts.find(function (x) { return x.id === id; }); if (!p) return;
+ trackRecentlyViewed(p.id);
  var t = document.getElementById('qvTitle'), pr = document.getElementById('qvPrice'), b = document.getElementById('qvBadge'), i = document.getElementById('qvId'), d = document.getElementById('qvDesc');
  if (t) t.textContent = p.name;
  if (pr) pr.innerHTML = formatRupiah(p.price) + '<span class="text-xs text-slate-400 font-sans font-medium">/slop</span>';
@@ -476,13 +500,6 @@ window.closeCookieBanner = function () {
 };
 
 /* ============ 10. VISITOR COUNTER ============ */
-function initVisitorCounter() {
- var el = document.getElementById('visitorCount'); if (!el) return;
- var count = Math.floor(Math.random() * (45 - 18 + 1)) + 18;
- el.textContent = count;
- setInterval(function () { count = Math.max(15, Math.min(60, count + Math.floor(Math.random() * 5) - 2)); el.textContent = count; }, 4000);
-}
-
 /* ============ 11. KERANJANG ============ */
 window.__addCart = function (id) {
  var p = allProducts.find(function (x) { return x.id === id; }); if (!p) return;
@@ -662,17 +679,24 @@ window.submitReview = function () {
 /* ============ 14. NEWSLETTER ============ */
 window.handleNewsletterSubmit = function (form) {
  var input = form.querySelector('input[type="email"]');
- if (input && input.value) { showToast('Terima kasih! Anda telah berlangganan newsletter.'); input.value = ''; }
+ if (!input || !input.value) return;
+ try {
+ var list = JSON.parse(localStorage.getItem('r2_newsletter_emails') || '[]');
+ if (list.indexOf(input.value) === -1) list.push(input.value);
+ localStorage.setItem('r2_newsletter_emails', JSON.stringify(list));
+ } catch (e) {}
+ showToast('Terima kasih! Email kamu sudah kami catat.');
+ input.value = '';
 };
 
 /* ============ 15. INISIALISASI ============ */
 document.addEventListener('DOMContentLoaded', function () {
  var loader = document.getElementById('loader');
  if (loader) { loader.style.opacity = '0'; setTimeout(function () { loader.style.display = 'none'; }, 700); }
- initVisitorCounter();
  initTextAnimations();
  initCookieConsent();
  updateWishlistUI();
+ renderRecentlyViewed();
  buildFilterChips();
  updateCatalogInfoBanner();
  renderProductDisplay();
@@ -703,6 +727,9 @@ document.addEventListener('DOMContentLoaded', function () {
  });
 
  var si = document.getElementById('searchInput'), sb = document.getElementById('searchSuggestions');
+ if (si && sb && window.MutationObserver) {
+ new MutationObserver(function () { si.setAttribute('aria-expanded', sb.classList.contains('hidden') ? 'false' : 'true'); }).observe(sb, { attributes: true, attributeFilter: ['class'] });
+ }
  if (si) {
  var cb = document.getElementById('clearSearchBtn');
  window.clearSearch = function () {
@@ -725,7 +752,7 @@ document.addEventListener('DOMContentLoaded', function () {
  sb.innerHTML = matches.map(function (p) {
  var sq = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  var hl = p.name.replace(new RegExp(sq, 'gi'), function (m) { return '<span class="text-gold bg-gold/10 px-0.5 rounded">' + m + '</span>'; });
- return '<div class="px-4 py-3 hover:bg-ivory cursor-pointer border-b border-slate-100 last:border-0 flex items-center gap-3 transition-colors" data-suggest-id="' + p.id + '"><i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i><div><div class="text-sm font-bold text-deep">' + hl + '</div><div class="text-xs text-slate-500 font-mono">' + formatRupiah(p.price) + '</div></div></div>';
+ return '<div class="px-4 py-3 hover:bg-ivory cursor-pointer border-b border-slate-100 last:border-0 flex items-center gap-3 transition-colors" role="option" data-suggest-id="' + p.id + '"><i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i><div><div class="text-sm font-bold text-deep">' + hl + '</div><div class="text-xs text-slate-500 font-mono">' + formatRupiah(p.price) + '</div></div></div>';
  }).join('');
  sb.classList.remove('hidden');
  } else sb.classList.add('hidden');
@@ -762,9 +789,14 @@ document.addEventListener('DOMContentLoaded', function () {
  document.addEventListener('keydown', function (e) {
  if (e.key !== 'Escape') return;
  var m = document.getElementById('checkoutModal'), r = document.getElementById('reviewModal'), q = document.getElementById('quickViewModal');
+ var lg = document.getElementById('legalModal'), cs = document.getElementById('cartSidebar'), ws = document.getElementById('wishlistSidebar'), mm = document.getElementById('mobileMenu');
  if (m && m.classList.contains('modal-enter')) closeCheckoutModal();
  if (r && r.classList.contains('modal-enter')) closeReviewModal();
  if (q && q.classList.contains('modal-enter')) closeQuickView();
+ if (lg && lg.classList.contains('modal-enter')) closeLegalModal();
+ if (cs && !cs.classList.contains('translate-x-full')) toggleCart();
+ if (ws && !ws.classList.contains('translate-x-full')) toggleWishlistSidebar();
+ if (mm && !mm.classList.contains('hidden')) closeMobileMenu();
  });
 
  var mm = document.getElementById('mobileMenu');

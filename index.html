@@ -14,8 +14,34 @@
 <meta name="apple-mobile-web-app-title" content="R2 Nusantara">
 <meta property="og:title" content="R2 Nusantara — Distributor Rokok Grosir Malang">
 <meta property="og:description" content="233 merek ready stock · Gratis Ongkir 1 Bal · Bayar Setelah Resi · Gudang fisik di Malang, Jawa Timur.">
-<meta property="og:image" content="https://gudangdistributormalang-r2nusantara.github.io/R2-Nusantara/assets/logo/preview.jpg">
+<meta property="og:image" content="https://cigarettetobaccoshop.github.io/id.com/assets/logo/preview.jpg">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://cigarettetobaccoshop.github.io/id.com/">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Store",
+ "name": "R2 Nusantara",
+ "alternateName": "Cigarette Tobacco Shop",
+ "description": "Distributor rokok grosir resmi berbasis di Malang, Jawa Timur. Melayani mitra toko di seluruh Indonesia dengan 233 merek ready stock.",
+ "url": "https://cigarettetobaccoshop.github.io/id.com/",
+ "image": "https://cigarettetobaccoshop.github.io/id.com/assets/logo/preview.jpg",
+ "telephone": "+6285715905079",
+ "priceRange": "Rp 150.000 - Rp 400.000",
+ "address": {
+ "@type": "PostalAddress",
+ "addressLocality": "Malang",
+ "addressRegion": "Jawa Timur",
+ "addressCountry": "ID"
+ },
+ "openingHoursSpecification": {
+ "@type": "OpeningHoursSpecification",
+ "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+ "opens": "08:00",
+ "closes": "17:00"
+ }
+}
+</script>
 <script>
 window.__logoFail=function(img,s){var d=document.createElement('div');d.className='logo-core font-serif '+(s==='lg'?'text-2xl':'text-sm');d.textContent='R2';if(img.replaceWith)img.replaceWith(d);else img.outerHTML=d.outerHTML;};
 window.__imgFail=function(img,w,h,label){img.onerror=null;var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#232f3e"/><stop offset="100%" stop-color="#0f172a"/></linearGradient></defs><rect width="'+w+'" height="'+h+'" fill="url(#g)"/><text x="'+(w/2)+'" y="'+(h/2)+'" font-family="Inter,sans-serif" font-size="'+Math.round(h*0.08)+'" font-weight="800" fill="#c8962e" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">'+label+'</text></svg>';img.src='data:image/svg+xml;utf8,'+encodeURIComponent(svg);};
@@ -124,7 +150,7 @@ tailwind.config = {
  <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-14 items-center relative">
  <div>
  <div class="flex flex-wrap items-center gap-3">
- <div class="live-visitor-badge"><span class="dot"></span><span><b id="visitorCount" class="font-bold">24</b> pelaku bisnis sedang melihat</span></div>
+ <div class="live-visitor-badge"><i class="fa-solid fa-shop text-emerald-600"></i><span><b>500+</b> Mitra Toko Aktif Berbelanja</span></div>
  <div class="trust-badge"><i class="fa-solid fa-certificate text-gold"></i> Distributor Resmi Malang</div>
  </div>
  <h1 data-word-reveal class="mt-6 font-serif font-extrabold text-deep text-4xl sm:text-5xl xl:text-[3.6rem] leading-[1.08]">
@@ -336,9 +362,9 @@ tailwind.config = {
  <div class="flex items-center gap-3">
  <div class="relative w-full sm:w-64">
  <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
- <input id="searchInput" type="text" placeholder="Cari merek…" autocomplete="off" class="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-gold/10 focus:border-gold transition-all">
+ <input id="searchInput" type="text" placeholder="Cari merek…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchSuggestions" aria-autocomplete="list" aria-label="Cari produk" class="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-4 focus:ring-gold/10 focus:border-gold transition-all">
  <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-100 text-slate-500 items-center justify-center hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Hapus pencarian"><i class="fa-solid fa-xmark text-[9px]"></i></button>
- <div id="searchSuggestions" class="search-suggestions-box hidden"></div>
+ <div id="searchSuggestions" role="listbox" aria-label="Saran pencarian" class="search-suggestions-box hidden"></div>
  </div>
  <select onchange="applySort(this.value)" class="py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-600 focus:outline-none focus:border-gold" aria-label="Urutkan">
  <option value="name-asc">A-Z</option>
@@ -351,6 +377,14 @@ tailwind.config = {
  <button id="viewTableBtn" class="view-toggle-btn" onclick="setViewMode('table')" aria-label="Tampilan Tabel"><i class="fa-solid fa-table-list"></i></button>
  </div>
  </div>
+ </div>
+
+ <div id="recentlyViewedWrap" class="mb-5 hidden">
+ <div class="flex items-center gap-2 mb-2.5">
+ <i class="fa-regular fa-clock text-slate-400 text-xs"></i>
+ <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">Baru Dilihat</span>
+ </div>
+ <div id="recentlyViewedRow" class="flex gap-2.5 overflow-x-auto pb-1 no-scrollbar"></div>
  </div>
 
  <div id="catalogInfoBanner" class="catalog-info-banner mb-5 fade-on-scroll">
@@ -492,7 +526,7 @@ tailwind.config = {
  <div class="map-overlay-pill glass-dark"><i class="fa-solid fa-location-dot text-gold"></i> Gudang R2 Nusantara — Malang, Jawa Timur</div>
  </div>
  <div class="lg:col-span-2 bg-white rounded-3xl border border-slate-200 p-7 flex flex-col gap-5 fade-on-scroll" style="transition-delay:120ms">
- <img src="assets/logo/hero-bg.jpg" alt="Area loading gudang R2 Nusantara" class="rounded-2xl h-36 w-full object-cover" onerror="__imgFail(this,400,144,'GUDANG R2')">
+ <img src="assets/logo/hero-bg.jpg" alt="Area loading gudang R2 Nusantara" loading="lazy" class="rounded-2xl h-36 w-full object-cover" onerror="__imgFail(this,400,144,'GUDANG R2')">
  <div class="flex items-start gap-4">
  <div class="logo-frame logo-frame-sm shrink-0">
  <img src="assets/logo/logo.png" alt="Logo R2 Nusantara" class="logo-core-img" onerror="__logoFail(this,'sm')">
@@ -600,7 +634,7 @@ tailwind.config = {
 
 <!-- ============ CART SIDEBAR ============ -->
 <div id="cartOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
-<aside id="cartSidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[71] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+<aside id="cartSidebar" role="dialog" aria-modal="true" aria-label="Keranjang Belanja" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[71] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
  <div class="p-5 border-b border-slate-100 flex items-center justify-between">
  <h3 class="font-serif font-bold text-deep"><i class="fa-solid fa-cart-shopping text-gold mr-2"></i>Draft Pesanan</h3>
  <button onclick="toggleCart()" class="w-9 h-9 rounded-xl bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Tutup"><i class="fa-solid fa-xmark text-sm"></i></button>
@@ -614,7 +648,7 @@ tailwind.config = {
 
 <!-- ============ WISHLIST SIDEBAR ============ -->
 <div id="wishlistOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[70] hidden opacity-0 transition-opacity duration-300" onclick="toggleWishlistSidebar()"></div>
-<aside id="wishlistSidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[71] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+<aside id="wishlistSidebar" role="dialog" aria-modal="true" aria-label="Wishlist" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-[71] shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
  <div class="p-5 border-b border-slate-100 flex items-center justify-between">
  <h3 class="font-serif font-bold text-deep"><i class="fa-solid fa-heart text-red-400 mr-2"></i>Wishlist</h3>
  <button onclick="toggleWishlistSidebar()" class="w-9 h-9 rounded-xl bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Tutup"><i class="fa-solid fa-xmark text-sm"></i></button>
@@ -624,7 +658,7 @@ tailwind.config = {
 
 <!-- ============ LEGAL MODAL ============ -->
 <div id="legalOverlay" class="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="closeLegalModal()"></div>
-<div id="legalModal" class="fixed left-1/2 top-1/2 z-[81] w-[92%] max-w-lg -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl p-8 shadow-2xl max-h-[80vh] overflow-y-auto">
+<div id="legalModal" role="dialog" aria-modal="true" aria-labelledby="legalTitle" class="fixed left-1/2 top-1/2 z-[81] w-[92%] max-w-lg -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl p-8 shadow-2xl max-h-[80vh] overflow-y-auto">
  <button onclick="closeLegalModal()" class="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Tutup"><i class="fa-solid fa-xmark text-sm"></i></button>
  <h3 id="legalTitle" class="font-serif font-extrabold text-xl text-deep mb-4 pr-8">Judul</h3>
  <div id="legalBody" class="text-xs text-slate-600 leading-relaxed space-y-3"></div>
@@ -632,7 +666,7 @@ tailwind.config = {
 
 <!-- ============ QUICK VIEW ============ -->
 <div id="quickViewOverlay" class="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="closeQuickView()"></div>
-<div id="quickViewModal" class="fixed left-1/2 top-1/2 z-[81] w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl p-8 shadow-2xl">
+<div id="quickViewModal" role="dialog" aria-modal="true" aria-label="Lihat Cepat Produk" class="fixed left-1/2 top-1/2 z-[81] w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl p-8 shadow-2xl">
  <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-xl bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Tutup"><i class="fa-solid fa-xmark text-sm"></i></button>
  <div class="flex items-center justify-between gap-2"><span id="qvBadge" class="segment-badge tier-populer">R2</span><span id="qvId" class="text-slate-300 text-[10px] font-mono font-bold">R2-000</span></div>
  <h3 id="qvTitle" class="font-serif font-extrabold text-2xl text-deep mt-4">Nama Produk</h3>
@@ -646,7 +680,7 @@ tailwind.config = {
 
 <!-- ============ CHECKOUT MODAL ============ -->
 <div id="checkoutModalOverlay" class="fixed inset-0 z-[85] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeCheckoutModal()"></div>
-<div id="checkoutModal" class="fixed left-1/2 top-1/2 z-[86] w-[95%] max-w-2xl max-h-[90vh] overflow-y-auto -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl shadow-2xl">
+<div id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout" class="fixed left-1/2 top-1/2 z-[86] w-[95%] max-w-2xl max-h-[90vh] overflow-y-auto -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl shadow-2xl">
  <div class="p-6 sm:p-8">
  <div class="flex items-center justify-between mb-8">
  <h3 class="font-serif font-extrabold text-xl text-deep"><i class="fa-solid fa-clipboard-check text-gold mr-2"></i>Informasi Pengiriman</h3>
