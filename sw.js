@@ -1,18 +1,16 @@
-const CACHE_NAME = 'r2-nusantara-v3';
+const CACHE_NAME = 'r2-nusantara-v4';
 const urlsToCache = [
-  './',
-  './index.html',
-  './style.css',
-  './app.js',
-  './data.js',
-  './manifest.json'
+  '/id.com/',
+  '/id.com/index.html',
+  '/id.com/style.css',
+  '/id.com/app.js',
+  '/id.com/data.js',
+  '/id.com/manifest.json'
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache =>
-      Promise.all(urlsToCache.map(url => cache.add(url).catch(() => {})))
-    )
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)).catch(function(){})
   );
 });
 
