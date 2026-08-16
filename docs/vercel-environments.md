@@ -210,3 +210,4 @@ Paket yang dibeli hanya berlaku untuk satu proyek. Anggota yang memiliki izin un
 ## Sumber daya lainnya
 
 - [Pelajari berbagai lingkungan di Vercel.](https://www.youtube.com/watch?v=nZrAgov_-D8)
+
