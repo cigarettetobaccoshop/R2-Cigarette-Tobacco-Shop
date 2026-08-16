@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Lint, Build & Test
+    name: Lint, TypeCheck, Build & Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,6 +26,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Type check (if project uses TypeScript)
+        run: |
+          if [ -f tsconfig.json ]; then
+            npx tsc --noEmit
+          else
+            echo "No tsconfig.json, skipping type check"
+          fi
+
       - name: Run linter
         run: |
           if npm run -s lint; then
@@ -35,6 +43,8 @@ jobs:
           fi
 
       - name: Build (production)
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
         run: npm run build
 
       - name: Run tests (if present)
@@ -42,11 +52,11 @@ jobs:
           if npm run -s test; then
             echo "Tests passed"
           else
-            echo "No tests or tests failed" && exit 0
+            echo "Tests failed" && exit 1
           fi
 
       - name: Upload build output (artifact)
-        if: success() && always()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: next-build
