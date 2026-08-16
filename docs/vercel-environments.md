@@ -1,5 +1,13 @@
 # Lingkungan
 
+Daftar isi
+
+- [Lingkungan Pembangunan Lokal](#lingkungan-pembangunan-lokal)
+- [Lingkungan Pratinjau (Pra-produksi)](#lingkungan-pratinjau-pra-produksi)
+- [Lingkungan Produksi](#lingkungan-produksi)
+- [Lingkungan Kustom](#lingkungan-kustom)
+- [Sumber daya lainnya](#sumber-daya-lainnya)
+
 Vercel menyediakan tiga lingkungan default— Lokal, Pratinjau, dan Produksi:
 
 1. Pengembangan Lokal: mengembangkan dan menguji perubahan kode pada mesin lokal Anda.
@@ -50,11 +58,11 @@ Ini akan mengisi `.env.local` file di direktori aplikasi Anda.
 
 Lingkungan pratinjau memungkinkan Anda untuk menerapkan dan menguji perubahan dalam pengaturan langsung, tanpa memengaruhi situs produksi Anda. Secara default, Vercel membuat penerapan pratinjau ketika Anda:
 
-- Lakukan push commit ke branch yang bukan branch produksi Anda (biasanya `main`)
-- Buat permintaan pull (PR) di [GitHub, GitLab](/docs/git), atau Bitbucket.
-- Lakukan deployment menggunakan CLI tanpa `--prod` flag, misalnya hanya dengan `vercel`
+- Melakukan push commit ke branch yang bukan branch produksi Anda (biasanya `main`).
+- Membuat permintaan pull (PR) di GitHub, GitLab, atau Bitbucket.
+- Melakukan deployment menggunakan CLI tanpa `--prod` flag, misalnya hanya dengan `vercel`.
 
-[Penyebaran pertama](#first-deployment) dari proyek baru selalu merupakan penyebaran produksi. Aturan pratinjau di atas hanya berlaku setelah penyebaran produksi pertama tersebut ada.
+[Penyebaran pertama](#penyebaran-pertama) dari proyek baru selalu merupakan penyebaran produksi. Aturan pratinjau di atas hanya berlaku setelah penyebaran produksi pertama tersebut ada.
 
 Setiap deployment akan mendapatkan URL yang dibuat secara otomatis, dan Anda biasanya akan melihat tautan muncul di komentar PR penyedia Git Anda atau di Dasbor Vercel.
 
@@ -75,22 +83,24 @@ Secara default, mendorong atau menggabungkan perubahan ke cabang produksi Anda (
 vercel --prod
 ```
 
+Commit ke cabang produksi, atau `vercel --prod`, akan membuat deployment produksi. Cabang lain, permintaan tarik, dan `vercel` tanpa `--prod` akan membuat deployment pratinjau.
+
 Saat penerapan produksi berhasil, Vercel memperbarui domain produksi Anda untuk mengarah ke penerapan baru, memastikan pengguna Anda melihat perubahan terbaru dengan segera. Untuk alur kerja tingkat lanjut, Anda dapat menonaktifkan promosi otomatis penerapan dan [mengontrol promosi secara manual](/docs/deployments/promoting-a-deployment).
 
 ### Penyebaran pertama
 
 Peluncuran pertama proyek baru selalu merupakan peluncuran produksi. Ini terjadi bahkan ketika Anda:
 
-- Impor repositori Git di dasbor.
-- Jalankan `vercel` atau `vercel deploy` dari CLI tanpa `--prod`
-- Lakukan deployment dari branch yang bukan [branch produksi Anda.](/docs/git#production-branch)
+- Mengimpor repositori Git di dasbor.
+- Menjalankan `vercel` atau `vercel deploy` dari CLI tanpa `--prod`.
+- Melakukan deployment dari branch yang bukan branch produksi Anda.
 
 Vercel melakukan ini agar setiap proyek baru memiliki penerapan produksi dan dapat langsung menerima [domain produksi.](/docs/domains/working-with-domains/deploying-and-redirecting)
 
 Setelah penerapan produksi pertama tersebut, penerapan selanjutnya mengikuti aturan yang biasa:
 
 - Melakukan commit ke branch produksi, atau `vercel --prod` membuat deployment produksi.
-- Cabang lain, permintaan tarik, dan `vercel` tanpa `--prod` membuat [penerapan pratinjau](#preview-environment-pre-production)
+- Cabang lain, permintaan tarik, dan `vercel` tanpa `--prod` membuat deployment pratinjau.
 
 ## Lingkungan Kustom
 
@@ -102,10 +112,8 @@ Pemilik tim dan administrator proyek dapat membuat, memperbarui, atau menghapus 
 
 ### Membuat lingkungan khusus
 
-DasborkeritingSDK
-
 1. Buka pengaturan [Lingkungan](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fenvironments&title=Go+to+Environments+settings) proyek Anda di Dasbor Vercel.
-2. Klik Buat Lingkungan
+2. Klik Buat Lingkungan.
 3. Berikan nama (misalnya, `staging`), dan secara opsional:
    - Pelacakan Cabang untuk melakukan deployment secara otomatis setiap kali cabang yang sesuai di-push.
    - Lampirkan Domain untuk memberikan URL tetap ke lingkungan Anda.
@@ -113,7 +121,7 @@ DasborkeritingSDK
 
 Untuk membuat token Authorization Bearer, lihat bagian [token akses](/docs/rest-api#creating-an-access-token) pada dokumentasi API.
 
-keriting
+Contoh curl
 
 ```bash
 curl --request POST \
@@ -128,7 +136,7 @@ curl --request POST \
 
 Untuk membuat token Authorization Bearer, lihat bagian [token akses](/docs/rest-api#creating-an-access-token) pada dokumentasi API.
 
-buatLingkunganKustom
+Contoh menggunakan Vercel SDK
 
 ```javascript
 import { Vercel } from '@vercel/sdk';
@@ -152,7 +160,7 @@ async function run() {
 run();
 ```
 
-### Menggunakan lingkungan kustom melalui CLI.
+### Menggunakan lingkungan kustom melalui CLI
 
 Anda dapat menerapkan, menarik, dan mengelola variabel lingkungan ke lingkungan kustom Anda dengan CLI:
 
@@ -210,4 +218,3 @@ Paket yang dibeli hanya berlaku untuk satu proyek. Anggota yang memiliki izin un
 ## Sumber daya lainnya
 
 - [Pelajari berbagai lingkungan di Vercel.](https://www.youtube.com/watch?v=nZrAgov_-D8)
-
