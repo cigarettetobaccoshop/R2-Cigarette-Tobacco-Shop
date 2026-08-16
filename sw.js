@@ -1,29 +1,31 @@
-const CACHE_NAME = 'r2-nusantara-v4';
-const urlsToCache = [
-  '/id.com/',
-  '/id.com/index.html',
-  '/id.com/style.css',
-  '/id.com/app.js',
-  '/id.com/data.js',
-  '/id.com/manifest.json'
-];
+const CACHE_NAME = 'r2n-cache-v1';
+const OFFLINE_URLS = ['/', '/manifest.json', '/assets/logo.png'];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)).catch(function(){})
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_URLS)).catch(() => {})
   );
+  self.skipWaiting();
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-    ))
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    )
   );
+  self.clients.claim();
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
+    fetch(event.request)
+      .then((res) => {
+        const clone = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
+        return res;
+      })
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/')))
   );
 });

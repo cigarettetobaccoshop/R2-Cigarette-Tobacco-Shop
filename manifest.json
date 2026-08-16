@@ -1,19 +1,20 @@
 {
-  "name": "R2 Nusantara",
+  "name": "R2 Nusantara — Cigarette Tobacco Shop",
   "short_name": "R2 Nusantara",
-  "description": "Distributor Rokok Grosir Premium Malang",
-  "start_url": "/id.com/",
+  "description": "Distributor rokok grosir R2 & Resmi, gudang Malang. Bayar setelah barang terkonfirmasi terkirim.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#007185",
+  "background_color": "#3D2712",
+  "theme_color": "#8B5A2B",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "assets/logo/logo-192.png",
+      "src": "/assets/logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/logo/logo-512.png",
+      "src": "/assets/logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

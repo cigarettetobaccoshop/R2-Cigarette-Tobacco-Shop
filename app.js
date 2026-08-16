@@ -230,7 +230,7 @@ function generateProductPlaceholder(name, size, uid) {
  return '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">' +
  '<defs><linearGradient id="' + gid + '" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#eff6ff"/><stop offset="100%" stop-color="#bfdbfe"/></linearGradient></defs>' +
  '<rect width="' + w + '" height="' + h + '" fill="url(#' + gid + ')" rx="8"/>' +
- '<circle cx="' + (w * 0.85) + '" cy="' + (h * 0.2) + '" r="' + (h * 0.35) + '" fill="#c8962e" opacity="0.15"/>' + wm +
+ '<circle cx="' + (w * 0.85) + '" cy="' + (h * 0.2) + '" r="' + (h * 0.35) + '" fill="#0F3D6E" opacity="0.12"/>' + wm +
  '<text x="' + (w / 2) + '" y="' + (h / 2) + '" font-family="Inter, sans-serif" font-size="' + fs + '" font-weight="700" fill="#1e3a5f" text-anchor="middle" dominant-baseline="middle">' + safe + '</text></svg>';
 }
 function buildCardActions(p) {
@@ -371,6 +371,8 @@ window.toggleWishlistItem = function (id, event) {
 function updateWishlistUI() {
  var badge = document.getElementById('wishlistBadge');
  if (badge) { badge.innerText = wishlist.length; badge.classList.toggle('scale-0', wishlist.length === 0); }
+ var mbBadge = document.getElementById('mbWishBadge');
+ if (mbBadge) { mbBadge.textContent = wishlist.length; mbBadge.classList.toggle('hidden', wishlist.length === 0); }
  document.querySelectorAll('[data-wish-heart]').forEach(function (btn) {
  var id = btn.getAttribute('data-wish-heart'), on = isWishlisted(id);
  btn.classList.toggle('is-active', on);
@@ -517,6 +519,8 @@ function updateCartUI() {
  var tp = cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
  var badge = document.getElementById('cartBadge');
  if (badge) { badge.innerText = t; badge.classList.toggle('scale-0', t === 0); }
+ var mbBadge = document.getElementById('mbCartBadge');
+ if (mbBadge) { mbBadge.textContent = t; mbBadge.classList.toggle('hidden', t === 0); }
  var bq = document.getElementById('bannerQty'), pf = document.getElementById('progressFill'), bt = document.getElementById('bannerTitle'), bs = document.getElementById('bannerSubtitle'), bn = document.getElementById('shippingProgressBanner');
  if (bq) bq.innerText = t;
  if (pf) pf.style.width = Math.min((t / 20) * 100, 100) + '%';
@@ -633,9 +637,35 @@ window.submitOrder = function () {
  cart = []; window.__cart = cart; saveCart(); updateCartUI(); closeCheckoutModal();
  var f = document.getElementById('checkoutFormFull'); if (f) f.reset();
  btn.classList.remove('checkout-success'); btnText.textContent = 'Konfirmasi Pesanan'; btnIcon.className = 'fa-brands fa-whatsapp text-lg';
- validateCheckoutForm(); showToast('Pesanan berhasil dilanjutkan! 🎉');
+ validateCheckoutForm();
+ setTimeout(openSuccessPopup, 400);
  }, 800);
  }, 1500);
+};
+window.openSuccessPopup = function () {
+ var o = document.getElementById('successOverlay'), m = document.getElementById('successPopup');
+ if (o) { o.classList.remove('hidden'); setTimeout(function () { o.classList.add('overlay-enter'); }, 10); }
+ if (m) setTimeout(function () { m.classList.add('modal-enter'); }, 10);
+ document.body.style.overflow = 'hidden';
+};
+window.closeSuccessPopup = function () {
+ var o = document.getElementById('successOverlay'), m = document.getElementById('successPopup');
+ if (o) o.classList.remove('overlay-enter');
+ if (m) m.classList.remove('modal-enter');
+ setTimeout(function () { if (o) o.classList.add('hidden'); }, 300);
+ document.body.style.overflow = '';
+};
+/* Salin nomor WhatsApp ke clipboard */
+window.copyToClipboard = function (text, label) {
+ var done = function () { showToast((label ? label + ' — ' : '') + 'Nomor disalin!'); };
+ if (navigator.clipboard && navigator.clipboard.writeText) {
+ navigator.clipboard.writeText(text).then(done).catch(function () { showToast('Gagal menyalin', 'error'); });
+ } else {
+ var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+ document.body.appendChild(ta); ta.select();
+ try { document.execCommand('copy'); done(); } catch (e) { showToast('Gagal menyalin', 'error'); }
+ document.body.removeChild(ta);
+ }
 };
 
 /* ============ 13. REVIEW ============ */
@@ -724,6 +754,11 @@ document.addEventListener('DOMContentLoaded', function () {
  l.textContent = Math.round(pct * 100) + '%';
  w.style.opacity = window.scrollY > 400 ? '1' : '0';
  }
+ if (window.scrollY < window.innerHeight * 1.2) {
+ var b1 = document.querySelector('.blob-1'), b2 = document.querySelector('.blob-2');
+ if (b1) b1.style.transform = 'translateY(' + (window.scrollY * 0.18) + 'px)';
+ if (b2) b2.style.transform = 'translateY(' + (window.scrollY * -0.12) + 'px)';
+ }
  });
 
  var si = document.getElementById('searchInput'), sb = document.getElementById('searchSuggestions');
@@ -790,6 +825,8 @@ document.addEventListener('DOMContentLoaded', function () {
  if (e.key !== 'Escape') return;
  var m = document.getElementById('checkoutModal'), r = document.getElementById('reviewModal'), q = document.getElementById('quickViewModal');
  var lg = document.getElementById('legalModal'), cs = document.getElementById('cartSidebar'), ws = document.getElementById('wishlistSidebar'), mm = document.getElementById('mobileMenu');
+ var sp = document.getElementById('successPopup');
+ if (sp && sp.classList.contains('modal-enter')) closeSuccessPopup();
  if (m && m.classList.contains('modal-enter')) closeCheckoutModal();
  if (r && r.classList.contains('modal-enter')) closeReviewModal();
  if (q && q.classList.contains('modal-enter')) closeQuickView();

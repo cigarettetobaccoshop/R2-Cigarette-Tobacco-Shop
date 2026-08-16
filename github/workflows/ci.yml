@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    name: Lint, TypeCheck, Build & Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check (if project uses TypeScript)
+        run: |
+          if [ -f tsconfig.json ]; then
+            npx tsc --noEmit
+          else
+            echo "No tsconfig.json, skipping type check"
+          fi
+
+      - name: Run linter
+        run: |
+          if npm run -s lint; then
+            echo "Lint passed"
+          else
+            echo "Lint failed" && exit 1
+          fi
+
+      - name: Build (production)
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: npm run build
+
+      - name: Run tests (if present)
+        run: |
+          if npm run -s test; then
+            echo "Tests passed"
+          else
+            echo "Tests failed" && exit 1
+          fi
+
+      - name: Upload build output (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/

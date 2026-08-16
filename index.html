@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/logo/logo.png">
 <link rel="apple-touch-icon" href="assets/logo/logo.png">
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#007185">
+<meta name="theme-color" content="#0F3D6E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="R2 Nusantara">
@@ -44,7 +44,7 @@
 </script>
 <script>
 window.__logoFail=function(img,s){var d=document.createElement('div');d.className='logo-core font-serif '+(s==='lg'?'text-2xl':'text-sm');d.textContent='R2';if(img.replaceWith)img.replaceWith(d);else img.outerHTML=d.outerHTML;};
-window.__imgFail=function(img,w,h,label){img.onerror=null;var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#232f3e"/><stop offset="100%" stop-color="#0f172a"/></linearGradient></defs><rect width="'+w+'" height="'+h+'" fill="url(#g)"/><text x="'+(w/2)+'" y="'+(h/2)+'" font-family="Inter,sans-serif" font-size="'+Math.round(h*0.08)+'" font-weight="800" fill="#c8962e" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">'+label+'</text></svg>';img.src='data:image/svg+xml;utf8,'+encodeURIComponent(svg);};
+window.__imgFail=function(img,w,h,label){img.onerror=null;var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0F3D6E"/><stop offset="100%" stop-color="#0A2A4D"/></linearGradient></defs><rect width="'+w+'" height="'+h+'" fill="url(#g)"/><text x="'+(w/2)+'" y="'+(h/2)+'" font-family="Inter,sans-serif" font-size="'+Math.round(h*0.08)+'" font-weight="800" fill="#D7DEE6" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">'+label+'</text></svg>';img.src='data:image/svg+xml;utf8,'+encodeURIComponent(svg);};
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
 </script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -53,11 +53,10 @@ tailwind.config = {
  theme: {
  extend: {
  colors: {
- gold: { DEFAULT: '#c8962e', dark: '#a97c1f', light: '#e6c36a' },
- deep: '#232f3e',
- ivory: '#f7f5f0',
- brand: { 400: '#4fb3d9', 700: '#007185' },
- amazon: { bg: '#0a0f1a', accent: '#232f3e', border: '#e5e5e5' }
+ gold: { DEFAULT: '#8A96A8', dark: '#5C6B85', light: '#D7DEE6' },
+ deep: '#0F3D6E',
+ ivory: '#F6F8FA',
+ brand: { 400: '#8FA8C9', 700: '#1E5FA8' }
  },
  fontFamily: {
  sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -105,7 +104,10 @@ tailwind.config = {
  <img src="assets/logo/logo.png" alt="Logo R2 Nusantara" class="logo-core-img" onerror="__logoFail(this,'sm')">
  </div>
  <div>
- <div class="font-serif font-extrabold text-deep leading-none group-hover:text-gold transition-colors">R2 Nusantara</div>
+ <div class="flex items-center gap-1.5">
+ <span class="font-serif font-extrabold text-deep leading-none group-hover:text-gold transition-colors">R2 Nusantara</span>
+ <i class="fa-solid fa-circle-check verified-badge" title="Akun Terverifikasi" aria-label="Terverifikasi"></i>
+ </div>
  <div class="text-[8px] uppercase tracking-[0.3em] text-slate-400 mt-0.5">Cigarette Tobacco Shop</div>
  </div>
  </a>
@@ -305,7 +307,7 @@ tailwind.config = {
  <div class="mt-5 flex gap-2"><span class="trust-badge"><i class="fa-solid fa-shield-halved text-emerald-500"></i> Aman</span><span class="trust-badge"><i class="fa-solid fa-eye text-brand-700"></i> Transparan</span></div>
  </div>
  <div class="why-card card-glow card-premium bg-white rounded-3xl p-8 border border-slate-200 fade-on-scroll" style="transition-delay:100ms">
- <div class="why-icon wi-gold"><i class="fa-solid fa-video"></i></div>
+ <div class="why-icon wi-silver"><i class="fa-solid fa-video"></i></div>
  <h3 class="font-serif font-bold text-lg text-deep mt-5">Real-time Packing</h3>
  <p class="text-sm text-slate-500 mt-2 leading-relaxed">Dokumentasi foto &amp; video langsung dari gudang hingga packing. Mitra melihat pesanan disiapkan secara transparan.</p>
  <div class="mt-5 flex gap-2"><span class="trust-badge"><i class="fa-solid fa-camera text-gold"></i> Foto</span><span class="trust-badge"><i class="fa-solid fa-clapperboard text-gold"></i> Video</span></div>
@@ -590,8 +592,8 @@ tailwind.config = {
  <div>
  <h4 class="footer-title">Tim Sales &amp; Admin</h4>
  <div class="space-y-2">
- <div class="sales-card"><div><div class="text-[10px] font-bold text-white">Admin 1</div><div class="text-[10px] font-mono">+62 857-1590-5079</div></div><a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="wa-circle" aria-label="WhatsApp Admin 1"><i class="fa-brands fa-whatsapp text-xs"></i></a></div>
- <div class="sales-card"><div><div class="text-[10px] font-bold text-white">Admin 2</div><div class="text-[10px] font-mono">+62 831-6938-6894</div></div><a href="https://wa.me/6283169386894" target="_blank" rel="noopener" class="wa-circle" aria-label="WhatsApp Admin 2"><i class="fa-brands fa-whatsapp text-xs"></i></a></div>
+ <div class="sales-card"><div><div class="text-[10px] font-bold text-white">Admin 1</div><div class="text-[10px] font-mono">+62 857-1590-5079</div></div><div class="flex items-center gap-1.5"><button onclick="copyToClipboard('6285715905079','Admin 1')" class="copy-btn" aria-label="Salin Nomor Admin 1" title="Salin Nomor"><i class="fa-regular fa-copy text-[10px]"></i></button><a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="wa-circle" aria-label="WhatsApp Admin 1"><i class="fa-brands fa-whatsapp text-xs"></i></a></div></div>
+ <div class="sales-card"><div><div class="text-[10px] font-bold text-white">Admin 2</div><div class="text-[10px] font-mono">+62 831-6938-6894</div></div><div class="flex items-center gap-1.5"><button onclick="copyToClipboard('6283169386894','Admin 2')" class="copy-btn" aria-label="Salin Nomor Admin 2" title="Salin Nomor"><i class="fa-regular fa-copy text-[10px]"></i></button><a href="https://wa.me/6283169386894" target="_blank" rel="noopener" class="wa-circle" aria-label="WhatsApp Admin 2"><i class="fa-brands fa-whatsapp text-xs"></i></a></div></div>
  </div>
  <h4 class="footer-title mt-6">Jangkauan Pengiriman</h4>
  <div class="flex flex-wrap gap-2">
@@ -655,6 +657,15 @@ tailwind.config = {
  </div>
  <div id="wishlistItemsContainer" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
 </aside>
+
+<!-- ============ SUCCESS POPUP ============ -->
+<div id="successOverlay" class="fixed inset-0 z-[90] bg-deep/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="closeSuccessPopup()"></div>
+<div id="successPopup" role="dialog" aria-modal="true" aria-label="Pesanan Berhasil" class="fixed left-1/2 top-1/2 z-[91] w-[88%] max-w-sm -translate-x-1/2 -translate-y-1/2 scale-90 opacity-0 pointer-events-none transition-all duration-300 bg-white rounded-3xl p-8 shadow-2xl text-center glass-pill">
+ <div class="success-check-circle mx-auto mb-4"><i class="fa-solid fa-check"></i></div>
+ <h3 class="font-serif font-extrabold text-xl text-deep mb-2">Pesanan Terkirim!</h3>
+ <p class="text-xs text-slate-500 leading-relaxed mb-6">Detail pesanan kamu sudah diteruskan ke Admin lewat WhatsApp. Mohon tunggu konfirmasi dari tim kami.</p>
+ <button onclick="closeSuccessPopup()" class="w-full py-3 rounded-xl bg-deep text-white font-bold text-sm hover:bg-gold transition-colors">Tutup</button>
+</div>
 
 <!-- ============ LEGAL MODAL ============ -->
 <div id="legalOverlay" class="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" onclick="closeLegalModal()"></div>
@@ -784,12 +795,21 @@ tailwind.config = {
 
 <!-- ============ FIXED UI ============ -->
 <div id="toast-container" class="fixed top-24 right-4 z-[95] space-y-2 w-[calc(100%-2rem)] max-w-xs"></div>
-<a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="fixed bottom-6 right-20 z-40 w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label="Chat WhatsApp"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+<a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="hidden lg:flex fixed bottom-6 right-20 z-40 w-12 h-12 rounded-full bg-[#25D366] text-white items-center justify-center shadow-xl hover:scale-110 transition-transform" aria-label="Chat WhatsApp"><i class="fa-brands fa-whatsapp text-xl"></i></a>
 <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas"><i class="fa-solid fa-arrow-up text-sm"></i></button>
+
+<!-- ============ MOBILE BOTTOM NAVIGATION ============ -->
+<nav class="mobile-bottom-nav lg:hidden" aria-label="Navigasi Mobile">
+ <a href="#beranda" class="mb-nav-item"><i class="fa-solid fa-house"></i><span>Beranda</span></a>
+ <a href="#produk" class="mb-nav-item"><i class="fa-solid fa-shop"></i><span>Katalog</span></a>
+ <button onclick="toggleCart()" class="mb-nav-item mb-nav-cart" aria-label="Keranjang"><i class="fa-solid fa-cart-shopping"></i><span id="mbCartBadge" class="mb-nav-badge hidden">0</span><span>Keranjang</span></button>
+ <button onclick="toggleWishlistSidebar()" class="mb-nav-item" aria-label="Wishlist"><i class="fa-solid fa-heart"></i><span id="mbWishBadge" class="mb-nav-badge hidden">0</span><span>Wishlist</span></button>
+ <a href="https://wa.me/6285715905079" target="_blank" rel="noopener" class="mb-nav-item"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+</nav>
 <div id="scrollProgress" class="fixed bottom-6 left-6 z-40 opacity-0 pointer-events-none hidden lg:block w-11 h-11">
  <svg width="44" height="44" viewBox="0 0 44 44">
  <circle cx="22" cy="22" r="18" stroke="rgba(148,163,184,0.3)" stroke-width="3" fill="rgba(255,255,255,0.85)"></circle>
- <circle id="scrollCircle" cx="22" cy="22" r="18" stroke="#c8962e" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="113.1" transform="rotate(-90 22 22)"></circle>
+ <circle id="scrollCircle" cx="22" cy="22" r="18" stroke="#0F3D6E" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="113.1" transform="rotate(-90 22 22)"></circle>
  </svg>
  <span id="scrollPercent" class="absolute inset-0 flex items-center justify-center text-[9px] font-bold font-mono text-deep">0%</span>
 </div>
