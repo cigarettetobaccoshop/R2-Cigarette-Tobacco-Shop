@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cigarettetobaccoshop.github.io/id.com/sitemap.xml
+Sitemap: https://www.r2nusantara.com/sitemap.xml
