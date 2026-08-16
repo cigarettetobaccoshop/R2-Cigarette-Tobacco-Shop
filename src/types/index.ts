@@ -39,3 +39,4 @@ export interface Order {
   status: OrderStatus;
   resi?: string;
 }
+
