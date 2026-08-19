@@ -19,6 +19,28 @@ export default function ProdukDetail({ product, related }: Props) {
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
 
+  if (!product) {
+    return (
+      <>
+        <SEO title="Produk tidak ditemukan — R2 Nusantara" description="Produk tidak ditemukan." path="/produk" />
+        <Header />
+        <main className="mx-auto max-w-7xl px-4 py-16 text-center">
+          <h1 className="font-poppins text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+            Produk tidak ditemukan
+          </h1>
+          <p className="mt-2 text-sm text-neutral-500">Produk yang Anda cari tidak tersedia.</p>
+          <a
+            href="/katalog"
+            className="mt-6 inline-block rounded-lg bg-tembakau-700 px-5 py-3 text-sm font-semibold text-white hover:bg-tembakau-800"
+          >
+            Kembali ke Katalog
+          </a>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -89,7 +111,7 @@ export default function ProdukDetail({ product, related }: Props) {
           </div>
         </div>
 
-        {related.length > 0 && (
+        {related && related.length > 0 && (
           <section className="mt-16">
             <h2 className="mb-4 font-poppins text-lg font-bold text-tembakau-800 dark:text-emas-400">Produk Terkait</h2>
             <ul className="products grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

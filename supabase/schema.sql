@@ -82,3 +82,4 @@ create policy "Admin kelola produk" on products for all using (auth.role() = 'au
 --    Supabase Dashboard → Table Editor → Insert → Import data from CSV,
 --    lalu mapping kolom: Handle→id, Variant SKU→sku, Title→name, dst.
 -- ============================================================
+
