@@ -1,0 +1,252 @@
+/* ============================================
+   style.css — Custom Styles + Animasi
+   R2 Nusantara · WooCommerce/Shopify Design
+============================================ */
+
+* { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FAFAFA;
+    color: #0A0A0A;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+::selection { background: rgba(10,10,10,0.12); color: #0A0A0A; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #737373; }
+
+*:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 2px; }
+
+/* LOADER */
+.loader-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0A0A0A;
+    transition: opacity 0.7s ease;
+}
+.loader-hidden { opacity: 0; pointer-events: none; }
+.loader-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+}
+.loader-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.85);
+}
+.loader-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+}
+.loader-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 40px rgba(255,255,255,0.08);
+    background: #fff;
+    padding: 4px;
+}
+.loader-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+}
+.loader-sub {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #737373;
+    margin-top: 0.25rem;
+}
+.loader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 99px;
+    overflow: hidden;
+    margin: 1.2rem auto 0;
+}
+.loader-bar-fill {
+    width: 40%;
+    height: 100%;
+    background: #fff;
+    border-radius: 99px;
+    animation: loaderSlide 1.2s ease-in-out infinite;
+}
+@keyframes loaderSlide {
+    0% { margin-left: -45%; }
+    100% { margin-left: 105%; }
+}
+
+/* HERO & FOOTER BG */
+.hero-bg {
+    background: linear-gradient(180deg, rgba(10,10,10,0.70) 0%, rgba(10,10,10,0.90) 100%),
+                url('assets/logo/hero-bg.jpg') center/cover no-repeat;
+}
+.footer-bg {
+    background: linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.97) 100%),
+                url('assets/logo/footer-bg.jpg') center/cover no-repeat;
+}
+.watermark {
+    background: url('assets/logo/watermark.png') center/contain no-repeat;
+    opacity: 0.06;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+}
+
+/* GLASS NAV */
+.glass-nav {
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* CART DRAWER */
+.cart-drawer {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    will-change: transform;
+}
+.cart-drawer.open { transform: translateX(0); }
+.cart-overlay {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.cart-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* FORM */
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #E5E5E5;
+    background: #FFFFFF;
+    font-size: 15px;
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #0A0A0A;
+    box-shadow: 0 0 0 3px rgba(10,10,10,0.08);
+}
+.form-input.error { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.10); }
+.form-input.success { border-color: #10B981; box-shadow: 0 0 0 3px rgba(16,185,129,0.10); }
+
+/* BADGE */
+.badge-soldout {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #EF4444;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 2px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+/* SCROLL REVEAL */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+                transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TOAST */
+.toast-enter {
+    animation: toastSlide 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes toastSlide {
+    0% { opacity: 0; transform: translateX(32px) scale(0.94); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* MOBILE BOTTOM NAV */
+@media (max-width: 639px) {
+    body { padding-bottom: 68px; }
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(255,255,255,0.92);
+        backdrop-filter: blur(14px) saturate(180%);
+        -webkit-backdrop-filter: blur(14px) saturate(180%);
+        border-top: 1px solid rgba(0,0,0,0.06);
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        padding-bottom: env(safe-area-inset-bottom, 0);
+        padding-top: 6px;
+    }
+    .mb-nav-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 4px 0 6px;
+        font-size: 9px;
+        font-weight: 600;
+        color: #737373;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s;
+        position: relative;
+    }
+    .mb-nav-item i { font-size: 20px; line-height: 1; }
+    .mb-nav-item.active,
+    .mb-nav-item:hover { color: #0A0A0A; }
+    .mb-nav-badge {
+        position: absolute;
+        top: 0;
+        right: calc(50% - 20px);
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: 999px;
+        background: #0A0A0A;
+        color: #fff;
+        font-size: 8px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (min-width: 640px) {
+    .mobile-bottom-nav { display: none !important; }
+    body { padding-bottom: 0; }
+}

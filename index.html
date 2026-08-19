@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>R2 Nusantara | Distributor Rokok Grosir Premium</title>
+    <meta name="description" content="Distributor rokok grosir resmi Malang. 233+ merek ready stock, gratis ongkir min 1 bal, bayar setelah resi." />
+    <link rel="icon" type="image/png" href="assets/logo/logo.png" />
+    <link rel="apple-touch-icon" href="assets/logo/logo.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta property="og:title" content="R2 Nusantara — Distributor Rokok Grosir Malang" />
+    <meta property="og:description" content="233+ merek ready stock · Gratis Ongkir 1 Bal · Bayar Setelah Resi" />
+    <meta property="og:image" content="assets/logo/preview.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cigarettetobaccoshop.github.io/id.com/" />
+    <link rel="canonical" href="https://cigarettetobaccoshop.github.io/id.com/" />
+
+    <!-- Tailwind CSS (CDN) + Custom Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-black': '#0A0A0A',
+                        'brand-white': '#FAFAFA',
+                        'brand-gray': '#737373',
+                        'brand-accent': '#E5E5E5',
+                        'brand-success': '#10B981',
+                        'brand-error': '#EF4444',
+                    },
+                    fontFamily: { inter: ['Inter', 'system-ui', 'sans-serif'] },
+                    borderRadius: { card: '12px' },
+                    boxShadow: {
+                        soft: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06)',
+                        lift: '0 8px 32px rgba(0,0,0,0.10)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Lucide Icons CDN (fallback emoji) -->
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+            if (typeof window.lucide === 'undefined') {
+                console.warn('Lucide not loaded, using fallback.');
+                document.querySelectorAll('[data-lucide]').forEach(function(el) {
+                    var map = {
+                        'shopping-cart': '🛒', 'search': '🔍', 'x': '✕', 'chevron-right': '→',
+                        'chevron-left': '←', 'star': '⭐', 'shield-check': '🛡️', 'truck': '🚚',
+                        'credit-card': '💳', 'check-circle': '✅', 'smartphone': '📱',
+                        'cpu': '⚡', 'camera': '📷', 'battery': '🔋', 'info': 'ℹ️',
+                        'menu': '☰', 'home': '🏠', 'package': '📦', 'phone': '📞', 'plus': '➕',
+                        'minus': '➖', 'heart': '❤️', 'heart-outline': '🤍'
+                    };
+                    el.textContent = map[el.getAttribute('data-lucide')] || '•';
+                    el.className = 'text-lg';
+                });
+            }
+        });
+    </script>
+
+    <!-- React & ReactDOM (CDN) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Store",
+            "name": "R2 Nusantara",
+            "description": "Distributor rokok grosir resmi berbasis di Malang, Jawa Timur.",
+            "url": "https://cigarettetobaccoshop.github.io/id.com/",
+            "telephone": "+6285715905079",
+            "priceRange": "Rp 150.000 - Rp 400.000",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Malang",
+                "addressRegion": "Jawa Timur",
+                "addressCountry": "ID"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader-screen">
+        <div class="loader-bg" style="background-image: url('assets/logo/loader-bg.jpg');"></div>
+        <div class="loader-overlay"></div>
+        <div class="loader-content">
+            <img src="assets/logo/logo.png" alt="R2 Nusantara" class="loader-logo" onerror="this.style.display='none'" />
+            <div class="loader-title">R2 NUSANTARA</div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+            <div class="loader-sub">Cigarette Tobacco Shop</div>
+        </div>
+    </div>
+
+    <!-- ROOT -->
+    <div id="root"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script type="text/babel" src="app.js"></script>
+
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            });
+        }
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.classList.add('loader-hidden');
+                setTimeout(() => { loader.style.display = 'none'; }, 700);
+            }
+        });
+    </script>
+</body>
+</html>
