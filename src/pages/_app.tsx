@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/next';
 import { CartProvider } from '@/context/CartContext';
 import CartDrawer from '@/components/CartDrawer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <CartDrawer />
       <WhatsAppFloat />
+      <Analytics />
     </CartProvider>
   );
 }
